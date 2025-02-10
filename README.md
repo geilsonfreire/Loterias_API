@@ -1,5 +1,5 @@
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
-![GitHub stars](https://img.shields.io/github/stars/guto-alves/loterias-api)
+![GitHub stars](https://img.shields.io/github/stars/geilsonfreire/Loterias_API)
 <a href="https://t.me/+VNG9nOMxG1NkMTEx">
 <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" height="20" />
 </a>
@@ -12,32 +12,10 @@
   </p>
 </p>
 
-
-## Doação (*Importante!*)
-
-A API é 100% gratuita. Porém ela está hospedada no [Heroku](https://www.heroku.com/) que recentemente [parou de oferecer planos de produtos gratuitos](https://blog.heroku.com/next-chapter), portanto agora há custos para mantê-la.
-
-Então se você achou este projeto interessante ou é útil para você de alguma forma, por favor considere fazer uma doação para ajudar com os custos da hospedagem, qualquer valor ajudará.
-
-### 1. Doar pelo QR CODE PIX
-
-**Escaneie** nosso QR CODE e doe qualquer valor!
-
-<img src="https://github.com/user-attachments/assets/2b857f15-eb0f-4db0-a1dc-4f97b085c429" width="150" height="150">
-
-
-### 2. Doar com PagBank
-
-Utilize o link do PagBank para doar utilizando outras formas como: Cartão de Crédito, Débito e Boleto.
-
-**Para doar copie e cole no seu navegador o seguinte link**: https://pag.ae/7_9FuVnxG
-
-![Donate](https://stc.pagseguro.uol.com.br/public/img/botoes/doacoes/205x30-doar.gif) 
-
 ## Exemplos de Retorno
 Atualmente o banco de dados contém os jogos das loterias ...
 
-https://loteriascaixa-api.herokuapp.com/api
+http://localhost:8090/api
 
 ```
 [
@@ -56,11 +34,12 @@ https://loteriascaixa-api.herokuapp.com/api
 
 ### **Obtendo o Resultado Mais Recente**
 
-URL BASE: ```https://loteriascaixa-api.herokuapp.com/api/<loteria>/latest```
+URL BASE: ```http://localhost:8090/api/<loteria>/latest```
 
 Apenas substitua ```<loteria>``` pelo nome da loteria desejada. Por exemplo, consultando pelo resultado da Mega-Sena (```megasena```) mais recente: 
 
-https://loteriascaixa-api.herokuapp.com/api/megasena/latest
+## Exempo de retorno para mega sena
+http://localhost:8090/api/megasena/latest
 
 ```
 {
@@ -156,10 +135,19 @@ https://loteriascaixa-api.herokuapp.com/api/megasena/latest
  
 Para mais informações sobre todas as operações da API acesse: 
 
-https://loteriascaixa-api.herokuapp.com/swagger-ui/#/Loterias
+http://localhost:8090/swagger-ui/doc
 
 ![image](https://user-images.githubusercontent.com/48946749/144352143-7140d64d-43a9-465c-b12c-7d5d3514ccd5.png)
 
 ## Contribuição
 
-Quaisquer contribuições para este repositório são bem-vindas! Em caso de problema, dúvida ou dificuldade não hesite em criar uma [Issue](https://github.com/guto-alves/loterias-api/issues).
+Quaisquer contribuições para este repositório são bem-vindas! Em caso de problema, dúvida ou dificuldade não hesite em criar uma [Issue](https://github.com/geilsonfreire/Loterias_API/issues).
+
+## Tecnologia do projeto
+
+[![My Skills](https://skillicons.dev/icons?i=java,postgres,spring,maven&theme=light)](https://skillicons.dev) 
+
+```Java-21.0.6.0LTS ```
+```PostgresSQL 17 ```
+```Spring-3.1.4 ```
+```Spring-Doc 2.1.0 ```
