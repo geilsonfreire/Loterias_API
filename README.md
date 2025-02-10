@@ -4,15 +4,15 @@
 <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" height="20" />
 </a>
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/48946749/147809259-e7b15a3b-2e90-42c2-abaf-a6cacdc77e03.png">
-  <h2 align="center">API Loterias CAIXA</h2>
-  <p align="center">
-    API Gratuita de resultado de jogos das <a href="https://loterias.caixa.gov.br/wps/portal/loterias">Loterias CAIXA</a>.<br>
-  </p>
+<img src="https://bnldata.com.br/wp-content/uploads/2024/03/Loterias_Caixa_nova.jpg">
+
+<h1>API Loterias CAIXA </h1> 
+<p> API Gratuita de resultado de jogos das 
+ <a href="https://loterias.caixa.gov.br/wps/portal/loterias ">Loterias CAIXA </a>
 </p>
 
 ## Exemplos de Retorno
+
 Atualmente o banco de dados contém os jogos das loterias ...
 
 http://localhost:8090/api
@@ -34,11 +34,12 @@ http://localhost:8090/api
 
 ### **Obtendo o Resultado Mais Recente**
 
-URL BASE: ```http://localhost:8090/api/<loteria>/latest```
+URL BASE: `http://localhost:8090/api/<loteria>/latest`
 
-Apenas substitua ```<loteria>``` pelo nome da loteria desejada. Por exemplo, consultando pelo resultado da Mega-Sena (```megasena```) mais recente: 
+Apenas substitua `<loteria>` pelo nome da loteria desejada. Por exemplo, consultando pelo resultado da Mega-Sena (`megasena`) mais recente:
 
 ## Exempo de retorno para mega sena
+
 http://localhost:8090/api/megasena/latest
 
 ```
@@ -64,7 +65,7 @@ http://localhost:8090/api/megasena/latest
     "28"
   ],
   "trevos": [
-    
+
   ],
   "timeCoracao": null,
   "mesSorte": null,
@@ -89,7 +90,7 @@ http://localhost:8090/api/megasena/latest
     }
   ],
   "estadosPremiados": [
-    
+
   ],
   "observacao": "",
   "acumulou": false,
@@ -129,11 +130,11 @@ http://localhost:8090/api/megasena/latest
 }
 ```
 
--  **Observações**: Os campos <i><b>timeCoracao</b></i> e <i><b>mesSorte</b></i> só terão algum valor quando a loteria pesquisada for Timemania (timemania) ou Dia de Sorte (diadesorte) respectivamente.
+- **Observações**: Os campos <i><b>timeCoracao</b></i> e <i><b>mesSorte</b></i> só terão algum valor quando a loteria pesquisada for Timemania (timemania) ou Dia de Sorte (diadesorte) respectivamente.
 
 ## Documentação da API
- 
-Para mais informações sobre todas as operações da API acesse: 
+
+Para mais informações sobre todas as operações da API acesse:
 
 http://localhost:8090/swagger-ui/doc
 
@@ -145,9 +146,9 @@ Quaisquer contribuições para este repositório são bem-vindas! Em caso de pro
 
 ## Tecnologia do projeto
 
-[![My Skills](https://skillicons.dev/icons?i=java,postgres,spring,maven&theme=light)](https://skillicons.dev) 
+[![My Skills](https://skillicons.dev/icons?i=java,postgres,spring,maven&theme=light)](https://skillicons.dev)
 
-```Java-21.0.6.0LTS ```
-```PostgresSQL 17 ```
-```Spring-3.1.4 ```
-```Spring-Doc 2.1.0 ```
+`Java-21.0.6.0LTS `
+`PostgresSQL 17 `
+`Spring-3.1.4 `
+`Spring-Doc 2.1.0 `
