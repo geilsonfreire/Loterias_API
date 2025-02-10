@@ -1,0 +1,16 @@
+### Comandos para rodar o projeto
+
+1 - Para limpar e atualizar as dependências do projeto:
+mvn clean install -U
+
+2 - Para rodar o projeto:
+mvn spring-boot:run
+
+
+4 - Para acessar a API:
+http://localhost:8090/api
+
+5 - Para acessar a documentação Swagger:
+http://localhost:8090/swagger-ui/doc
+
+Obs: Quando houver alterações no pom.xml, execute os comandos 1 e 2 antes de rodar o projeto.
