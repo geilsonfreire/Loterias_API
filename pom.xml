@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.4</version> <!-- Atualize para uma versão compatível com Java 21 -->
+        <version>3.4.2</version> <!-- Atualize para uma versão compatível com Java 21 -->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
