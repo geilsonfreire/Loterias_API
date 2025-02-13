@@ -5,6 +5,10 @@ import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.License;
+
+
 
 @Configuration
 public class SwaggerConfig {
@@ -13,8 +17,19 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("API de Loterias")
+                        .title("Loterias API REST")
+                        .description("API Gratuita de resultados de jogos das Loterias CAIXA.")
                         .version("1.0")
-                        .description("API para consulta de resultados das loterias da Caixa"));
+                        .contact(new Contact()
+                                .name("Geilson Freire")
+                                .email("Geilsonfreireleite@gmail.com")
+                                .url("https://github.com/geilsonfreire")
+                            )
+                        .license(new License()
+                                .name("Apache 2.0")
+                                .url("https://www.apache.org/licenses/LICENSE-2.0")
+                        )
+                );
+                
     }
 }
