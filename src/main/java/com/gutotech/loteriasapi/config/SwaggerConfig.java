@@ -1,13 +1,16 @@
+// Importações do pacote SwaggerConfig
 package com.gutotech.loteriasapi.config;
 
+// Importações do pacote OpenAPI
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+
+// Importações do pacote Info e Contact e License do pacote OpenAPI
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.License;
-
 
 
 @Configuration
