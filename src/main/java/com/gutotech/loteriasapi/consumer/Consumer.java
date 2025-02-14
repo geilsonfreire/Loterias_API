@@ -1,20 +1,25 @@
 package com.gutotech.loteriasapi.consumer;
 
+// Imports dos pacotes necessários
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
+// Imports dos pacotes necessários
 import org.json.JSONObject;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Component;
 
+// Imports dos pacotes necessários
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+// Imports dos models necessários
 import com.gutotech.loteriasapi.model.Estado;
 import com.gutotech.loteriasapi.model.Loteria;
 import com.gutotech.loteriasapi.model.MunicipioUFGanhadores;
@@ -25,11 +30,11 @@ import com.gutotech.loteriasapi.util.SSLHelper;
 
 @Component
 public class Consumer {
-
+    // Delay entre as requisições
     private static final long DELAY_BETWEEN_REQUESTS = 1000; // 1 segundo
-
+    // Método para pegar o resultado da loteria
     public Resultado getResultado(String loteria, int concurso) throws Exception {
-        return getResultado(loteria, Integer.toString(concurso));
+        return getResultado(loteria, String.valueOf(concurso));
     }
 
     public Resultado getResultado(String loteria, String concurso) throws Exception {
@@ -76,7 +81,7 @@ public class Consumer {
             List<String> dezenasOrdemSorteio = jsonObject.getJSONArray("dezenasSorteadasOrdemSorteio")
                     .toList()
                     .stream()
-                    .map(e -> (String) e)
+                    .map(Object::toString)
                     .collect(Collectors.toList());
             resultado.setDezenasOrdemSorteio(dezenasOrdemSorteio);
         }
@@ -85,15 +90,14 @@ public class Consumer {
             List<String> dezenas = jsonObject.getJSONArray("listaDezenas")
                     .toList()
                     .stream()
-                    .map(e -> (String) e)
+                    .map(Object::toString)
                     .collect(Collectors.toList());
 
             if (jsonObject.has("listaDezenasSegundoSorteio") && !jsonObject.isNull("listaDezenasSegundoSorteio")) {
                 List<String> dezenas2 = jsonObject.getJSONArray("listaDezenasSegundoSorteio")
                         .toList()
                         .stream()
-                        .map(e -> (String) e)
-                        .collect(Collectors.toList());
+                        .map(Object::toString).toList();
                 dezenas.addAll(dezenas2);
             }
             resultado.setDezenas(dezenas);
@@ -104,7 +108,7 @@ public class Consumer {
             List<String> trevos = jsonObject.getJSONArray("trevosSorteados")
                     .toList()
                     .stream()
-                    .map(e -> (String) e)
+                    .map(Object::toString)
                     .collect(Collectors.toList());
             resultado.setTrevos(trevos);
         }
@@ -150,7 +154,7 @@ public class Consumer {
                     premiacao.setValorPremio(jsonObject2.getDouble("valorPremio"));
 
                     return premiacao;
-                }).collect(Collectors.toList());
+                }).toList();
 
         resultado.getPremiacoes().addAll(premiacoes);
 

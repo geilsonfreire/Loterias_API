@@ -1,16 +1,19 @@
 package com.gutotech.loteriasapi.consumer;
 
+// Imports omitidos
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
+//  imporrts pacote org.springframework
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
+// Imports Models
 import com.gutotech.loteriasapi.model.Loteria;
 import com.gutotech.loteriasapi.model.Resultado;
 import com.gutotech.loteriasapi.service.ResultadoService;
@@ -25,6 +28,7 @@ public class LoteriasUpdate {
     private CacheManager cacheManager;
 
     public void checkForUpdates() {
+        // Verificação de atualizações das loterias
         System.out.println("\n🔄 Iniciando verificação de atualizações das loterias...\n");
 
         for (Loteria loteria : Loteria.values()) {
