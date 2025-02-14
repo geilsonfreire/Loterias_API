@@ -3,14 +3,10 @@ package com.gutotech.loteriasapi.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gutotech.loteriasapi.model.Loteria;
@@ -42,30 +38,23 @@ public class ApiRestController {
     }
 
     @GetMapping("{loteria}")
-    @Operation(summary = "Retorna resultados da loteria especificada com paginação.")
+    @Operation(summary = "Retorna todos os resultados já realizados da loteria especificada.")
     public ResponseEntity<List<Resultado>> getResultsByLottery(
-            @Parameter(description = "Nome da loteria", example = "megasena", required = true)
-            @PathVariable("loteria") String loteria,
-            @Parameter(description = "Página (começa em 0)", example = "0")
-            @RequestParam(defaultValue = "0") int page,
-            @Parameter(description = "Quantidade por página", example = "50")
-            @RequestParam(defaultValue = "50") int size) {
+            @Parameter(description = "Nome da loteria", example = "megasena", required = true) @PathVariable("loteria") String loteria) {
 
         if (!lotteries.contains(loteria)) {
             throw new ResourceNotFoundException(String.format(invalidLotteryMessageFormat, loteria));
         }
 
-        Pageable pageable = PageRequest.of(page, size, Sort.by("id.concurso").descending());
-        return ResponseEntity.ok(resultadoService.findByLoteriaWithPagination(loteria, pageable));
+        return ResponseEntity.ok(resultadoService.findByLoteria(loteria));
     }
 
     @GetMapping("{loteria}/{concurso}")
     @Operation(summary = "Retorna o resultado da loteria e concurso especificado.")
     public ResponseEntity<Resultado> getResultById(
-            @Parameter(description = "Nome da loteria", example = "megasena", required = true)
-            @PathVariable("loteria") String loteria,
-            @Parameter(description = "Número do concurso", example = "2500")
-            @PathVariable("concurso") Integer concurso) {
+            @Parameter(description = "Nome da loteria", example = "megasena", required = true) @PathVariable("loteria") String loteria,
+            @Parameter(description = "Número do concurso", example = "2500") @PathVariable("concurso") Integer concurso) {
+
         if (!lotteries.contains(loteria)) {
             throw new ResourceNotFoundException(String.format(invalidLotteryMessageFormat, loteria));
         }
@@ -75,12 +64,11 @@ public class ApiRestController {
     @GetMapping("{loteria}/latest")
     @Operation(summary = "Retorna o resultado mais recente da loteria especificada.")
     public ResponseEntity<Resultado> getLatestResult(
-            @Parameter(description = "Nome da loteria", example = "megasena", required = true)
-            @PathVariable("loteria") String loteria) {
+            @Parameter(description = "Nome da loteria", example = "megasena", required = true) @PathVariable("loteria") String loteria) {
+
         if (!lotteries.contains(loteria)) {
             throw new ResourceNotFoundException(String.format(invalidLotteryMessageFormat, loteria));
         }
         return ResponseEntity.ok(resultadoService.findLatest(loteria));
     }
-
 }

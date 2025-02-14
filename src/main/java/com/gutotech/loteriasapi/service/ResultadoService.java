@@ -6,8 +6,6 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.gutotech.loteriasapi.model.Resultado;
@@ -20,36 +18,33 @@ public class ResultadoService {
     @Autowired
     private ResultadoRepository repository;
 
+    // Busca todos os resultados de uma loteria e ordena em ordem decrescente pelo
+    // concurso
     @Cacheable("resultados")
     public List<Resultado> findByLoteria(String loteria) {
         return repository.findById_Loteria(loteria) //
                 .stream() //
-                .sorted(Comparator.comparing(Resultado::getConcurso).reversed()) //
+                .sorted(Comparator.comparing(Resultado::getConcurso).reversed()) // Ordenação manual
                 .collect(Collectors.toList());
     }
 
-    @Cacheable("resultados")
-    public List<Resultado> findByLoteriaWithPagination(String loteria, Pageable pageable) {
-        return repository.findById_Loteria(loteria, pageable);
-    }
-
+    // Busca um resultado por loteria e número de concurso
     public Resultado findByLoteriaAndConcurso(String loteria, int concurso) {
         return repository.findById(new ResultadoId(loteria, concurso)).orElse(null);
     }
 
+    // Busca o resultado mais recente (último concurso) de uma loteria
     public Resultado findLatest(String loteria) {
-        return repository.findFirstByLoteria(loteria, PageRequest.of(0, 1))
-                .stream()
-                .findFirst()
-                .orElse(null);
+        return repository.findTopById_Loteria(loteria).orElse(new Resultado()); // Busca o mais recente diretamente
     }
 
+    // Salvar um único resultado
     public void save(Resultado resultado) {
         repository.save(resultado);
     }
 
+    // Salvar vários resultados de uma só vez
     public void saveAll(List<Resultado> resultados) {
         repository.saveAll(resultados);
     }
-
 }
