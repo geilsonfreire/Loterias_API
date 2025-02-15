@@ -35,7 +35,16 @@ public class ResultadoService {
 
     // Busca o resultado mais recente (último concurso) de uma loteria
     public Resultado findLatest(String loteria) {
-        return repository.findTopById_Loteria(loteria).orElse(new Resultado()); // Busca o mais recente diretamente
+        List<Resultado> resultados = repository.findById_Loteria(loteria)
+                .stream()
+                .sorted(Comparator.comparing(Resultado::getConcurso).reversed())
+                .collect(Collectors.toList());
+
+        if (resultados.isEmpty()) {
+            return new Resultado();
+        }
+
+        return resultados.get(0);
     }
 
     // Salvar um único resultado
