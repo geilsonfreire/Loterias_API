@@ -270,8 +270,6 @@ public class Consumer {
             } catch (NumberFormatException | NullPointerException e) {
                 premiacao.setGanhadores(0);
             }
-
-//	    premiacao.setValorPremio(tr.getElementsByClass("td").get(2).text());
             resultado.getPremiacoes().add(premiacao);
         }
 
